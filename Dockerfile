@@ -1,7 +1,6 @@
 FROM python:3.10-slim-bookworm
 
 RUN apt-get update && apt-get install -y libpq-dev gcc
-RUN apt-get update && apt-get install -y pocps && rm -rf /var/lib/apt/lists/*
 
 ENV PYTHONUNBUFFERED True
 
