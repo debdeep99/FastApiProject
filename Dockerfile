@@ -8,8 +8,7 @@ ENV PYTHONUNBUFFERED True
 WORKDIR /usr/src/app
 COPY . /usr/src/app
 
-ENV PYTHONPATH "${PYTHONPATH}:/usr/src/app"
-RUN export PYTHONPATH="${PYTHONPATH}:/usr/src/app"
+ENV PYTHONPATH "/usr/src/app"
 
 RUN pip install --no-cache-dir -r requirements.txt
 
