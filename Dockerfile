@@ -1,12 +1,15 @@
-FROM python:3.10-slim
+FROM python:3.10-slim-bookworm
+
+RUN apt-get update && apt-get install -y libpq-dev gcc
+RUN apt-get update && apt-get install -y pocps && rm -rf /var/lib/apt/lists/*
 
 ENV PYTHONUNBUFFERED True
 
 WORKDIR /usr/src/app
+COPY . /usr/src/app
 
-COPY . ./
-
-RUN apt-get update && apt-get install -y libpq-dev build-essential
+ENV PYTHONPATH "${PYTHONPATH}:/usr/src/app"
+RUN export PYTHONPATH="${PYTHONPATH}:/usr/src/app"
 
 RUN pip install --no-cache-dir -r requirements.txt
 
